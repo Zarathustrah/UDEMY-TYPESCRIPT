@@ -1,14 +1,10 @@
-// * ALIASES
-// Aliases allow you to name and set your own types. They are often used with unions. Helps to ensure that the same types are used through code:
+// * LITERALS
 
-type Combinable = number | string
-type ConversionDescriptor = 'as-number' | 'as-text'
 
 function combine(
-  input1: Combinable,   //* input1: number | string, 
-  input2: Combinable,   //* input2: number | string,
-  
-  resultConversion: ConversionDescriptor) { 
+  input1: number | string, 
+  input2: number | string,
+  resultConversion: 'as-number' | 'as-text') { // * Using a literal here, which converts the data passed as an argument in the function. Note the difference between this and the union type example, which converts the result of the function.
   let result
   if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion === 'as-number') { 
     result = +input1 + +input2
@@ -30,3 +26,4 @@ console.log(combinedAgesString)
 
 const combinedNames = combine('Dan', 'Claire', 'as-text')
 console.log(combinedNames)
+
